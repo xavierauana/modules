@@ -1,0 +1,21 @@
+{
+    "name": "anacreation/modules",
+    "description": "Add on for nwidart/laravel-modules",
+    "type": "lib",
+    "require": {
+        "nwidart/laravel-modules": "^8.2"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Anacreation\\Modules\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Xavier Au",
+            "email": "xavier.au@anacreation.com"
+        }
+    ],
+    "minimum-stability": "dev"
+}

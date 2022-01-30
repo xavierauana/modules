@@ -1,0 +1,78 @@
+<?php
+
+namespace $CLASS_NAMESPACE$;
+
+use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Controller;
+use $COLLECTIONRESOURCENAMESPACE$;
+use $RESOURCENAMESPACE$;
+use $MODELNAMESPACE$;
+use $STOREREQUESTNAMESPACE$;
+use $UPDATEREQUESTNAMESPACE$;
+
+class $CLASS$ extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     * @return CollectionResource
+     */
+    public function index(Request $request)
+    {
+
+        $query = $MODEL$::newQuery();
+
+        $paginator = $query->paginate($request->get('pageSize',15));
+
+        return new CollectionResource($paginator);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     * @param StoreRequest $request
+     * @return Resource
+     */
+    public function store(StoreRequest $request)
+    {
+        $$model$ = $MODEL$::create($request->validated());
+
+        return new Resource($$model$);
+    }
+
+    /**
+     * Show the specified resource.
+     * @param $MODEL$ $$model$
+     * @return Resource
+     */
+    public function show($MODEL$ $$model$)
+    {
+        return new Resource($$model$);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     * @param UpdateRequest $request
+     * @param $MODEL$ $$model$
+     * @return Resource
+     */
+    public function update(UpdateRequest $request, $MODEL$ $$model$)
+    {
+        $$model$->update($request->validated());
+
+        $$model$->refresh();
+
+        return new Resource($$model$);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     * @param $MODEL$ $$model$
+     * @return Response
+     */
+    public function destroy($MODEL$ $$model$)
+    {
+        $$model$->delete();
+
+        return response();
+    }
+}
